@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freedom Code Funnel Map — Quiz-First Flow</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #0a0a12; color: #d4cfc5; padding: 40px 20px; }
+  .wrap { max-width: 800px; margin: 0 auto; }
+  
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #f5efe0; text-align: center; margin-bottom: 8px; font-weight: 400; }
+  .subtitle { text-align: center; color: #7a756a; font-size: 14px; margin-bottom: 48px; }
+  
+  .phase { margin-bottom: 32px; position: relative; }
+  .phase::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 56px;
+    bottom: -32px;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(201,168,76,0.3), rgba(201,168,76,0.05));
+  }
+  .phase:last-of-type::before { display: none; }
+  
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .phase-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .num-traffic { background: rgba(160,120,255,0.15); color: #a87bea; border: 2px solid rgba(160,120,255,0.3); }
+  .num-quiz { background: rgba(201,168,76,0.15); color: #c9a84c; border: 2px solid rgba(201,168,76,0.3); }
+  .num-gate { background: rgba(91,155,213,0.15); color: #5b9bd5; border: 2px solid rgba(91,155,213,0.3); }
+  .num-results { background: rgba(106,191,138,0.15); color: #6abf8a; border: 2px solid rgba(106,191,138,0.3); }
+  .num-nurture { background: rgba(224,82,82,0.15); color: #e05252; border: 2px solid rgba(224,82,82,0.3); }
+  .num-sell { background: rgba(255,180,50,0.15); color: #ffb432; border: 2px solid rgba(255,180,50,0.3); }
+  
+  .phase-title { font-size: 18px; color: #f5efe0; font-weight: 600; }
+  .phase-tag { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #7a756a; margin-top: 2px; }
+  
+  .phase-body {
+    margin-left: 72px;
+    background: #12121e;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  
+  .step { margin-bottom: 16px; }
+  .step:last-child { margin-bottom: 0; }
+  .step-label { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c9a84c; margin-bottom: 6px; font-weight: 600; }
+  .step-text { font-size: 14px; color: #d4cfc5; line-height: 1.7; }
+  .step-text strong { color: #f5efe0; }
+  
+  .tech-note {
+    background: rgba(201,168,76,0.06);
+    border-left: 2px solid rgba(201,168,76,0.3);
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #7a756a;
+    border-radius: 0 6px 6px 0;
+  }
+  .tech-note strong { color: #c9a84c; }
+  
+  .arrow-down {
+    text-align: center;
+    padding: 8px 0;
+    color: #c9a84c;
+    font-size: 18px;
+    opacity: 0.4;
+    margin-left: 28px;
+  }
+  
+  .section-divider {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    margin: 48px 0 40px;
+    padding-top: 32px;
+  }
+  
+  .section-divider h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: #f5efe0;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  
+  .section-divider p {
+    color: #7a756a;
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  
+  .file-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .file-item {
+    background: #12121e;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  
+  .file-status {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .done { color: #6abf8a; }
+  .needs-build { color: #e05252; }
+  .needs-update { color: #ffb432; }
+  
+  .file-name { font-size: 14px; color: #f5efe0; margin-bottom: 4px; }
+  .file-note { font-size: 12px; color: #7a756a; }
+  
+  @media (max-width: 600px) {
+    .file-grid { grid-template-columns: 1fr; }
+    .phase-body { margin-left: 20px; padding: 18px; }
+    .phase::before { left: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>Freedom Code — Customer Journey</h1>
+<p class="subtitle">Quiz-First Funnel Flow • Updated March 10, 2026</p>
+
+<!-- STEP 1: TRAFFIC -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num num-traffic">1</div>
+    <div>
+      <div class="phase-title">Traffic Sources</div>
+      <div class="phase-tag">Where they find you</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-label">Instagram Bio Link</div>
+      <div class="step-text">@dylan_ewing13 → bio link goes directly to quiz. Hook: <strong>"Take the 2-minute assessment → see what's actually running your life"</strong></div>
+    </div>
+    <div class="step">
+      <div class="step-label">Content Hooks</div>
+      <div class="step-text">Reels/posts drop pattern-based content (Controller, Runner, Ghost, Chameleon language). CTA in comments or stories: "Take the free quiz" → link to quiz.</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Paid Ads (Future)</div>
+      <div class="step-text">Pattern-specific ads targeting each archetype. "Still running from the thing you haven't named yet?" → quiz link.</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2: QUIZ -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num num-quiz">2</div>
+    <div>
+      <div class="phase-title">Pattern Map Quiz</div>
+      <div class="phase-tag">20 questions • no email required to start</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-label">The Experience</div>
+      <div class="step-text">Dark, premium design. 20 questions across 4 sections: <strong>Nervous System State → Daily Patterns → Relationships → Identity & Self-Worth</strong>. Each answer maps to Fight/Flight/Freeze/Fawn. Takes ~3 minutes.</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Why This Works</div>
+      <div class="step-text">Zero friction to start (no email gate upfront). By question 10, they're emotionally invested. By question 20, they NEED their results. This is the psychological commitment that makes the email gate convert at 60-80%.</div>
+    </div>
+    <div class="tech-note"><strong>GHL:</strong> Quiz hosted as custom page or embedded HTML. File: FC-Quiz-Pattern-Map.html</div>
+  </div>
+</div>
+
+<!-- STEP 3: EMAIL GATE -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num num-gate">3</div>
+    <div>
+      <div class="phase-title">Email Capture Gate</div>
+      <div class="phase-tag">Name + email before results show</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-label">The Moment</div>
+      <div class="step-text">"Your pattern has been mapped." — They see this AFTER answering all 20 questions. They've invested 3 minutes. Their curiosity is maxed. <strong>Name + email to unlock results.</strong></div>
+    </div>
+    <div class="step">
+      <div class="step-label">Data Captured</div>
+      <div class="step-text">First name, email, primary pattern type, all 4 scores. This means you can <strong>tag and segment by pattern</strong> — Controller gets different emails than Ghost.</div>
+    </div>
+    <div class="tech-note"><strong>GHL:</strong> Webhook fires on submit → creates contact → applies tag (quiz-completed + pattern-controller/runner/ghost/chameleon) → triggers automation</div>
+  </div>
+</div>
+
+<!-- STEP 4: RESULTS -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num num-results">4</div>
+    <div>
+      <div class="phase-title">Results + Free Reset Delivery</div>
+      <div class="phase-tag">The "holy sh*t" moment</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-label">Results Page</div>
+      <div class="step-text">Full breakdown: primary pattern name + archetype, animated bar chart showing all 4 scores, body explanation, daily life symptoms, where the pattern comes from (ACE/Polyvagal context), path forward.</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Bridge CTA</div>
+      <div class="step-text">"This quiz showed you what's running the show. <strong>The Day 1 Reset Protocol shows you how to interrupt it.</strong>" → CTA to thedylanewing.com Free Reset page OR direct email delivery.</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Email #1 (Immediate)</div>
+      <div class="step-text">Auto-sent from GHL: "Your Pattern Map Results + Your Free Reset Protocol" — includes their result summary + Free Reset link/attachment. <strong>This is the lead magnet delivery.</strong></div>
+    </div>
+    <div class="tech-note"><strong>GHL:</strong> Automation triggers immediate email with results recap + Free Reset PDF/link. Tag: free-reset-delivered</div>
+  </div>
+</div>
+
+<!-- STEP 5: NURTURE -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num num-nurture">5</div>
+    <div>
+      <div class="phase-title">Email Nurture Sequence</div>
+      <div class="phase-tag">Pattern-specific • 5-7 emails over 7-10 days</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-label">Email 1 (Day 0)</div>
+      <div class="step-text"><strong>Results + Free Reset delivery</strong> (already sent above)</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Email 2 (Day 1)</div>
+      <div class="step-text"><strong>"Here's what your pattern is costing you"</strong> — specific to their type. Controller = health/relationships. Runner = never finishing. Ghost = years lost. Chameleon = resentment.</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Email 3 (Day 3)</div>
+      <div class="step-text"><strong>Dylan's story</strong> — "I was The [Pattern] too" — near-death, came back, rebuilt everything differently. Personal, raw, your voice.</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Email 4 (Day 5)</div>
+      <div class="step-text"><strong>"Why the Reset alone isn't enough"</strong> — positions the Free Reset as the first step, Freedom Code as the full system. "The Reset cracks the door. Freedom Code walks you through it."</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Email 5 (Day 7)</div>
+      <div class="step-text"><strong>Freedom Code offer</strong> — full sales email. What's included, what changes, what it costs, how to enroll. Urgency if applicable (cohort, bonuses, limited spots).</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Emails 6-7 (Days 8-10)</div>
+      <div class="step-text"><strong>Objection handling + final push</strong> — FAQ, testimonials, "last chance" if using scarcity.</div>
+    </div>
+    <div class="tech-note"><strong>GHL:</strong> Full automation workflow. Pattern-based conditional content in emails (IF tag = pattern-ghost → Ghost-specific lines). Needs: email copy for all 5-7 emails.</div>
+  </div>
+</div>
+
+<!-- STEP 6: SELL -->
+<div class="phase">
+  <div class="phase-header">
+    <div class="phase-num num-sell">6</div>
+    <div>
+      <div class="phase-title">Freedom Code Sales Page</div>
+      <div class="phase-tag">The conversion point</div>
+    </div>
+  </div>
+  <div class="phase-body">
+    <div class="step">
+      <div class="step-label">Sales Page</div>
+      <div class="step-text">Long-form page built around the 4-Phase framework: <strong>STABILIZE → DECONSTRUCT → INSTALL → EXPAND</strong>. Shows what's included, who it's for, price, enrollment CTA. Pattern-specific language reinforces their quiz result.</div>
+    </div>
+    <div class="step">
+      <div class="step-label">Checkout</div>
+      <div class="step-text">GHL checkout or Stripe integration. Payment → immediate access to Freedom Code course portal.</div>
+    </div>
+    <div class="tech-note"><strong>GHL:</strong> Sales page + checkout. Tag: freedom-code-purchased. Removes from nurture sequence. Triggers onboarding email.</div>
+  </div>
+</div>
+
+<!-- FILE STATUS -->
+<div class="section-divider">
+  <h2>Build Status — What Exists vs What's Needed</h2>
+  <p>Updated March 2, 2026</p>
+  
+  <div class="file-grid">
+    <div class="file-item">
+      <div class="file-status done">✓ LIVE</div>
+      <div class="file-name">Pattern Map Quiz</div>
+      <div class="file-note">dmanwadefreedom.github.io/freedom-code-quiz — 20 questions, email gate, GHL connected</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status done">✓ LIVE</div>
+      <div class="file-name">$47 Pattern Reset Sales Page</div>
+      <div class="file-note">dmanwadefreedom.github.io/freedom-code-sales — CTA from quiz results</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status done">✓ DONE</div>
+      <div class="file-name">4 Pattern PDFs</div>
+      <div class="file-note">Controller, Runner, Ghost, Chameleon — ready for email delivery</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status done">✓ DONE</div>
+      <div class="file-name">Course Slides (Session 1)</div>
+      <div class="file-note">20 slides — 4 phases, daily protocol, Life Audit, commitment</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status done">✓ DONE</div>
+      <div class="file-name">Phase 1-4 Written Content</div>
+      <div class="file-note">Full slide copy for all 4 phases (30 days) — needs recording/delivery</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status done">✓ DONE</div>
+      <div class="file-name">GHL Contact Capture</div>
+      <div class="file-note">Quiz → GHL API → contact + tags (quiz-completed, pattern-type, freedom-code)</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status done">✓ DONE</div>
+      <div class="file-name">Reactivation Emails (Written)</div>
+      <div class="file-note">Hot (1), Warm (3), Cold (3), IG DMs (3) — need loading into GHL</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status needs-build">✗ NEEDS BUILD</div>
+      <div class="file-name">Pattern-Specific Nurture (6 emails)</div>
+      <div class="file-note">Post-quiz nurture: results → cost → story → bridge → offer → close</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status needs-build">✗ NEEDS BUILD</div>
+      <div class="file-name">GHL Email Automation</div>
+      <div class="file-note">Auto-send pattern PDF + nurture sequence (needs custom fields + workflow)</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status needs-update">⟳ NEEDS UPDATE</div>
+      <div class="file-name">Bio Link Update</div>
+      <div class="file-note">Point @dylan_ewing13 bio → quiz page URL</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status needs-build">✗ NEEDS BUILD</div>
+      <div class="file-name">Stripe Checkout ($47)</div>
+      <div class="file-note">Payment link for Pattern Reset — connect to sales page CTA</div>
+    </div>
+    <div class="file-item">
+      <div class="file-status needs-build">✗ NEEDS BUILD</div>
+      <div class="file-name">Program Delivery</div>
+      <div class="file-note">Video recordings, course portal, or 1:1 coaching delivery system</div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
