@@ -18,6 +18,22 @@ So we let AI watch them every hour. When something changes and sticks, we grab t
 
 ---
 
+## Transcript (read from the on-screen captions)
+
+> It turns out anybody can clone the strategy that made Kalshi so famous. Do you know how they blew up so quickly? It's because they do a lot of crazy bullshit. Like steal people's YouTube videos, and then AI clone them into white people, before blasting them everywhere as ads.
+>
+> Bear with me for a second. We're not going to do anything that horrible. But let's say you chose 10 different YouTubers. Make sure they have the same target market as you. You want to set up a workflow that will run every hour that will scrape all of their YouTube videos over and over and over. It'll save the video thumbnail and title to some sort of database.
+>
+> We want to see if any of the video thumbnails or titles suddenly change, and keep checking to see if it stays that way. If it does, that means they were split testing it, bro, and this version clearly won. And the AI will note that in the database. [Take] the winning titles and thumbnails. Filter for ones that got a bunch of views compared to how many subscribers they had. And then maybe adapt very lightly the title and thumbnail into whatever, like ads or articles or [cut off].
+>
+> Guys, it's chill. It's okay to steal like an artist sometimes. Just maybe don't whitewash some poor guy's video, or promote gambling while we're at it. That is also bad. And make sure to follow your boy, because I'm gonna keep shitposting things like this for entirely free.
+
+*Words in [brackets] were cut off or unclear. This came from the burned-in captions, not the audio.*
+
+**Missing from my first write-up:** he filters winners by **views compared to subscriber count**, not just raw views. A video that gets 200K views on a 50K-sub channel beat that channel's normal results. That's now step 7 in the prompt below.
+
+---
+
 ## Freedom Code version
 
 | Reel says | We do |
@@ -61,7 +77,8 @@ Build the monitor. For a nervous-system / trauma-pattern coach selling a $47 pro
    call them confirmed winners.
 7. For each one return: before/after images, source link, and one
    sentence on the concept that changed. Compare its views to
-   similar-age videos from the same channel.
+   similar-age videos from the same channel AND to the channel's
+   subscriber count. Rank by views ÷ subscribers (highest first).
 8. Then map each kept angle to one of our 4 patterns (Controller,
    Runner, Ghost, Chameleon) and write 3 hook options for a reel and
    1 Meta ad headline. Change the wording. Don't copy their title.
