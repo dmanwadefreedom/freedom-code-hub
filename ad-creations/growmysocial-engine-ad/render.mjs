@@ -17,7 +17,7 @@ fs.mkdirSync('out', {recursive: true});
 const publicDir = path.resolve('public');
 fs.mkdirSync(publicDir, {recursive: true});
 
-const theme = arg('--theme') === 'dark' ? 'dark' : 'light';
+const theme = arg('--theme') === 'light' ? 'light' : 'dark';
 let faceSrc = '';
 const face = arg('--face');
 if (face) {

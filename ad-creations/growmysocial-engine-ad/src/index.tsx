@@ -11,7 +11,7 @@ const Root: React.FC = () => (
     fps={FPS}
     width={1080}
     height={1920}
-    defaultProps={{faceSrc: '', theme: 'light' as const}}
+    defaultProps={{faceSrc: '', theme: 'dark' as const}}
   />
 );
 

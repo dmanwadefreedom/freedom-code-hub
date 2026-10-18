@@ -5,33 +5,39 @@
 **Built with:** Remotion (video from code). Every scene is ours. No footage, face, logo or words from the reference ad.
 **Reference:** a School of Hard Knocks "Content Engine" ad (Oct 18). We matched the *layout, beats and timing* only.
 
-## The beats
+## The beats (1:1 with the reference)
 
-Same 10 beats as the reference, in Grow My Social branding. Dylan confirmed (Oct 18) the product does competitor scanning, auto-edit and posting, so all of his beats stay in.
+Layout, timing and motion are the reference ad's, measured frame by frame and scaled from 720x1280 to 1080x1920. Only the colors and the brand changed.
 
-1. Competitor Intelligence (Scout → Analyze → Publish)
-2. Radar finds the top accounts in your space (counter to 48)
-3. "Working right now" videos with view counts
-4. Hook / pattern / why it worked
-5. Guessing what to post?
-6. Already proven to work (scored hooks)
-7. Trend radar, know what works first
-8. What to record / what to say
-9. Auto-edit timeline (cuts, captions, b-roll, sound)
-10. Posts everywhere → Build My Content Plan, 5 posts free
+| What matches | Detail |
+|---|---|
+| Selfie card | 380x503 at top-left, 2px accent border, outer glow, blue audio dot, name tag bottom-left |
+| Captions | 1-3 words, 52px heavy, white, pop in on each phrase |
+| Checklist card | 465x503 at top-right, logo + small-caps brand + "AUTOMATION ON", 5 steps, active step boxed, done steps get a filled check |
+| Dashboard band | sits between y=772 and y=1330, bottom third of the frame stays empty with the glow |
+| Scene 1 | window chrome (three dots, mono path, IDLE/RUNNING pill), three buttons, cursor moves and clicks Analyze with a ripple |
+| Scene 2 | radar with rings, crosshair, sweeping wedge, YOU dot, white and red dots popping, count to 46, three competitor rows with mono counts |
+| Scene 3 | WORKING RIGHT NOW pill, three phone cards at staggered heights, counts rolling up, +% in accent |
+| Scene 4 | left phone with corner brackets and "ANALYZING… 94%" progress, right cards fill from skeleton bars to text, Hook/Problem/Proof/CTA chips, 71% / x4.2 / +380% |
+| Scene 5 | "Guessing what to post?" with floating question marks and a post box that types then deletes |
+| Scene 6 | "Already proven to work" rows with score + SCORE label, third row dimmed and blurred |
+| Scene 7 | trend chart with gridlines, line draws in, YOU pill, Day 1/7/14/21 |
+| Scene 8 | "What to record" rows with MON/WED/FRI chips and red REC, then "What to say" with HOOK/BODY lines typing |
+| Scene 9 | Auto-Edit window, task list ticking, V1/TXT/SFX timeline with clips lighting up under a playhead |
+| Scene 10 | "Your video" phone fanning out to TikTok / Instagram / YouTube / LinkedIn / Facebook, then the CTA |
 
-All stats on screen are example numbers and are labeled "example data". Competitor handles are made up.
+Dylan confirmed (Oct 18) the product does competitor scanning, auto-edit and posting, so every beat stays. All stats on screen are example numbers. Competitor handles are made up.
 
 **Landing page check before paid spend:** growmysocial.app today only talks about ideas, drafts and scheduling through Zernio. Meta reads the ad against the landing page. If the ad shows competitor scanning and auto-edit, the page should mention them too, or the ad can get flagged for a mismatch. One section on the site fixes that.
 
-Brand pulled from the live site: accent `#6030ec`, text `#13112a`, white panels, purple leaf logo, Inter.
+Brand pulled from the live site: accent `#6030ec`, purple leaf logo, Inter. Dark palette is the reference's near-black with the warm glow swapped to purple.
 
 ## Two versions
 
 | File | Look | Test it as |
 |---|---|---|
-| `out/engine-ad-light.mp4` | White and purple, same as the site | A. Lands people on a page that looks the same |
-| `out/engine-ad-dark.mp4` | Dark purple, like the reference | B. Reads more "tech product" in the feed |
+| `out/engine-ad-dark.mp4` | Reference look, in purple (default) | A. Proven look, run this first |
+| `out/engine-ad-light.mp4` | Same layout on the site's white | B. Matches the landing page |
 
 Run both as separate ad sets for a week. Keep the one with the better 3-second hold and click rate.
 
@@ -39,20 +45,23 @@ Run both as separate ad sets for a week. Keep the one with the better 3-second h
 
 Vertical. Face in the top half. Window light in front of you. Point down at "the screen" a couple of times. One take is fine.
 
-**Script (6th grade, one thought per line):**
+**Script (his, word for word, with our CTA):**
 
 ```
-Okay so this thing right here is an automation.
-It goes out and finds the top accounts in your space.
-It pulls what's actually working for them right now.
-Then it breaks it down. Here's the hook. Here's the pattern. Here's why it worked.
-So you're not guessing what to post anymore. You're just looking at it.
-You know what works before anyone else.
-Then it plans what to record and what to say.
-It even edits the video for you. Cuts, captions, b-roll.
-Then it posts it everywhere.
+Yeah so okay, this thing right here, it's basically an automation
+that goes out and finds every top account in your space.
+It pulls whatever's actually working for them right now.
+And then it breaks it down for you. Like here's the hook, here's the pattern, here's why it worked.
+So you're not sitting guessing what to post anymore. You're literally just looking at it.
+And so you basically always know what's working before anyone else.
+And then it'll even plan out what you need to record, what you need to say,
+and post the finished video for you.
+If you check this out, it can even edit your videos for you. I mean it's absolutely insane.
+And it even posts everywhere.
 Five posts free. Link in bio.
 ```
+
+It runs 31 seconds at his pace. Captions and checklist ticks are timed to it, phrase by phrase, in `src/brand.ts`.
 
 Three faces? Record the same script three times, one each for Dylan, Alberto and Sam. Render three ads. Same dashboard, different face. That is three creatives for the price of one build, and Meta likes fresh faces in the same campaign.
 
@@ -62,8 +71,8 @@ Captions and checklist ticks are timed to this script. If a take runs long or sh
 
 ```
 npm install
-node render.mjs --face dylan.mp4                  # light, Dylan
-node render.mjs --face alberto.mp4 --theme dark   # dark, Alberto
+node render.mjs --face dylan.mp4                  # dark (default), Dylan
+node render.mjs --face alberto.mp4 --theme light  # light, Alberto
 node render.mjs --still 300                       # one frame, for QA
 ```
 
