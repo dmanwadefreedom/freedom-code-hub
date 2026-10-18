@@ -5,24 +5,26 @@
 **Built with:** Remotion (video from code). Every scene is ours. No footage, face, logo or words from the reference ad.
 **Reference:** a School of Hard Knocks "Content Engine" ad (Oct 18). We matched the *layout, beats and timing* only.
 
-## Why the beats changed
+## The beats
 
-The reference ad promises competitor scraping, auto video editing and auto posting. Grow My Social does not do those. Running his claims on our product is a false ad, and Meta pulls those. So every beat was swapped for what the site actually says it does:
+Same 10 beats as the reference, in Grow My Social branding. Dylan confirmed (Oct 18) the product does competitor scanning, auto-edit and posting, so all of his beats stay in.
 
-| His beat | Ours |
-|---|---|
-| Finds every top competitor | Tell it about your business (offer, audience, goal) |
-| Pulls what's working for them | AI builds the ideas (30 days, Teach / Help / Connect / Invite) |
-| Hook, pattern, why it worked | Hook, pattern, why it fits your offer |
-| Guessing what to post? | Same. The site uses this exact line. |
-| Already proven to work | Your week, taking shape (the site's own calendar) |
-| Trend radar | Draft you can edit. Your voice. Your final say. |
-| What to record / what to say | Short-video script for IG, TikTok, YouTube |
-| Auto-edit | (cut, product does not edit video) |
-| Posts everywhere | Approve, then schedule through Zernio |
-| Follow your boy | 5 posts free. No card. |
+1. Competitor Intelligence (Scout → Analyze → Publish)
+2. Radar finds the top accounts in your space (counter to 48)
+3. "Working right now" videos with view counts
+4. Hook / pattern / why it worked
+5. Guessing what to post?
+6. Already proven to work (scored hooks)
+7. Trend radar, know what works first
+8. What to record / what to say
+9. Auto-edit timeline (cuts, captions, b-roll, sound)
+10. Posts everywhere → Build My Content Plan, 5 posts free
 
-Brand pulled from the live site: accent `#6030ec`, text `#13112a`, white panels, purple leaf logo, Inter. Demo business and week are the site's own example.
+All stats on screen are example numbers and are labeled "example data". Competitor handles are made up.
+
+**Landing page check before paid spend:** growmysocial.app today only talks about ideas, drafts and scheduling through Zernio. Meta reads the ad against the landing page. If the ad shows competitor scanning and auto-edit, the page should mention them too, or the ad can get flagged for a mismatch. One section on the site fixes that.
+
+Brand pulled from the live site: accent `#6030ec`, text `#13112a`, white panels, purple leaf logo, Inter.
 
 ## Two versions
 
@@ -40,16 +42,16 @@ Vertical. Face in the top half. Window light in front of you. Point down at "the
 **Script (6th grade, one thought per line):**
 
 ```
-Okay so this thing right here is an AI social media manager.
-You tell it about your business. Your offer, your people, how you talk.
-Then it builds your ideas. Topics, hooks, angles.
-Here's the hook. Here's the topic. Here's why it fits.
-So you're not guessing what to post anymore.
-You're looking at your week, already planned.
-Every post is a draft you can edit. Your voice. Your final say.
-It even writes your short video scripts.
-Then you approve it and schedule it out.
-Five posts free. No card. Link in bio.
+Okay so this thing right here is an automation.
+It goes out and finds the top accounts in your space.
+It pulls what's actually working for them right now.
+Then it breaks it down. Here's the hook. Here's the pattern. Here's why it worked.
+So you're not guessing what to post anymore. You're just looking at it.
+You know what works before anyone else.
+Then it plans what to record and what to say.
+It even edits the video for you. Cuts, captions, b-roll.
+Then it posts it everywhere.
+Five posts free. Link in bio.
 ```
 
 Three faces? Record the same script three times, one each for Dylan, Alberto and Sam. Render three ads. Same dashboard, different face. That is three creatives for the price of one build, and Meta likes fresh faces in the same campaign.
@@ -73,9 +75,9 @@ Pull frames and check: captions not cut off, spelling right, face not covered, n
 
 ## 4. Claims to keep straight
 
-- "Schedule it out" is the $300 plan through Zernio. The ad says "approve it and schedule it out" and the final scene says "Scheduled through Zernio when you ask." Keep that line.
+- Every number on screen is example data and says so. Never swap in real client numbers unless they are real and you can back them up.
 - "5 posts free, no card" is on the site today. If pricing changes, change `brand.ts` and the script.
-- No numbers in the ad are performance claims. The "30" is 30 days of content, which is the site's headline.
+- Match the landing page to the ad (see "The beats" above).
 
 ## 5. SEO pack
 
