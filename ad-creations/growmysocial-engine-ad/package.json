@@ -1,0 +1,15 @@
+{
+  "name": "growmysocial-engine-ad",
+  "private": true,
+  "scripts": {
+    "render": "node render.mjs",
+    "still": "node render.mjs --still"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.536",
+    "@remotion/renderer": "4.0.536",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.536"
+  }
+}
